@@ -13,6 +13,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [showSettings, setShowSettings] = useState(false);
   const [serverIp, setServerIp] = useState(localStorage.getItem('SERVER_IP') || '');
+  const [isScanning, setIsScanning] = useState(false);
   
   const { login } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
@@ -57,6 +58,57 @@ export default function Login() {
       localStorage.removeItem('SERVER_IP');
     }
     window.location.reload();
+  };
+
+  const scanForServer = async () => {
+    setIsScanning(true);
+    setError('');
+    
+    // Common subnets to scan
+    const subnets = ['192.168.1', '192.168.0', '10.0.0'];
+    let found = false;
+
+    for (const subnet of subnets) {
+      if (found) break;
+      
+      // Scan range 1-254 (in batches of 10 for speed)
+      const batchSize = 10;
+      for (let i = 1; i < 255; i += batchSize) {
+        if (found) break;
+        
+        const promises = [];
+        for (let j = 0; j < batchSize && (i + j) < 255; j++) {
+          const ip = `${subnet}.${i + j}`;
+          const url = `http://${ip}:5000/api/health`; // Assuming you have a health endpoint or just check root
+          
+          promises.push(
+            fetch(url, { method: 'GET', signal: AbortSignal.timeout(500) }) // 500ms timeout
+              .then(res => {
+                if (res.ok) return ip;
+                throw new Error('Not found');
+              })
+              .catch(() => null)
+          );
+        }
+
+        const results = await Promise.all(promises);
+        const foundIp = results.find(ip => ip !== null);
+        
+        if (foundIp) {
+          setServerIp(foundIp);
+          localStorage.setItem('SERVER_IP', foundIp);
+          found = true;
+          setError(`Server found at ${foundIp}! Reloading...`);
+          setTimeout(() => window.location.reload(), 1500);
+          break;
+        }
+      }
+    }
+
+    if (!found) {
+      setError('Server not found automatically. Please enter IP manually.');
+    }
+    setIsScanning(false);
   };
 
   return (
@@ -145,7 +197,7 @@ export default function Login() {
             >
               <div className={`p-4 rounded-xl border ${isDarkMode ? 'bg-black/20 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
                 <label className="block text-xs font-bold mb-2 uppercase">Server IP Address</label>
-                <div className="flex gap-2">
+                <div className="flex gap-2 mb-2">
                   <input 
                     type="text" 
                     value={serverIp}
@@ -162,6 +214,15 @@ export default function Login() {
                     Save
                   </button>
                 </div>
+                <button 
+                  onClick={scanForServer}
+                  disabled={isScanning}
+                  className={`w-full py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 ${
+                    isScanning ? 'bg-gray-500 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700 text-white'
+                  }`}
+                >
+                  {isScanning ? 'Scanning Network...' : 'Auto Scan Network'}
+                </button>
                 <p className="text-xs opacity-50 mt-2">Current API: {API_URL}</p>
               </div>
             </motion.div>
