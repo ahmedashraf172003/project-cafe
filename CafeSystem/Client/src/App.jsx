@@ -16,6 +16,7 @@ import Cashier from './pages/Cashier';
 import ProductManager from './pages/ProductManager';
 import Settings from './pages/Settings';
 import StaffManager from './pages/StaffManager';
+import Connect from './pages/Connect';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Router>
             <Routes>
               {/* Public Routes */}
+              <Route path="/connect" element={<Connect />} />
               <Route path="/" element={<Menu />} />
               <Route path="/login" element={<Login />} />
 

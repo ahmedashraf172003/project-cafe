@@ -3,18 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
-import { Coffee, Lock, User, Sun, Moon, ArrowRight, Globe, Settings } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Coffee, Lock, User, Sun, Moon, ArrowRight, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { API_URL } from '../config';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [showSettings, setShowSettings] = useState(false);
-  const [serverIp, setServerIp] = useState(localStorage.getItem('SERVER_IP') || '');
-  const [isScanning, setIsScanning] = useState(false);
-  
   const { login } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
@@ -47,68 +43,8 @@ export default function Login() {
         setError(t('invalidCredentials'));
       }
     } catch (err) {
-      setError(t('serverError') + ' - ' + API_URL);
+      setError(t('serverError'));
     }
-  };
-
-  const saveServerIp = () => {
-    if (serverIp) {
-      localStorage.setItem('SERVER_IP', serverIp);
-    } else {
-      localStorage.removeItem('SERVER_IP');
-    }
-    window.location.reload();
-  };
-
-  const scanForServer = async () => {
-    setIsScanning(true);
-    setError('');
-    
-    // Common subnets to scan
-    const subnets = ['192.168.1', '192.168.0', '10.0.0'];
-    let found = false;
-
-    for (const subnet of subnets) {
-      if (found) break;
-      
-      // Scan range 1-254 (in batches of 10 for speed)
-      const batchSize = 10;
-      for (let i = 1; i < 255; i += batchSize) {
-        if (found) break;
-        
-        const promises = [];
-        for (let j = 0; j < batchSize && (i + j) < 255; j++) {
-          const ip = `${subnet}.${i + j}`;
-          const url = `http://${ip}:5000/api/health`; // Assuming you have a health endpoint or just check root
-          
-          promises.push(
-            fetch(url, { method: 'GET', signal: AbortSignal.timeout(500) }) // 500ms timeout
-              .then(res => {
-                if (res.ok) return ip;
-                throw new Error('Not found');
-              })
-              .catch(() => null)
-          );
-        }
-
-        const results = await Promise.all(promises);
-        const foundIp = results.find(ip => ip !== null);
-        
-        if (foundIp) {
-          setServerIp(foundIp);
-          localStorage.setItem('SERVER_IP', foundIp);
-          found = true;
-          setError(`Server found at ${foundIp}! Reloading...`);
-          setTimeout(() => window.location.reload(), 1500);
-          break;
-        }
-      }
-    }
-
-    if (!found) {
-      setError('Server not found automatically. Please enter IP manually.');
-    }
-    setIsScanning(false);
   };
 
   return (
@@ -132,14 +68,6 @@ export default function Login() {
       >
         {/* Toggles */}
         <div className="absolute top-6 right-6 flex gap-2">
-          <button 
-            onClick={() => setShowSettings(!showSettings)}
-            className={`p-2 rounded-full transition-all flex items-center gap-1 font-bold text-xs ${
-              isDarkMode ? 'bg-white/5 hover:bg-white/10 text-luxury-gold' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
-            }`}
-          >
-            <Settings size={16} />
-          </button>
           <button 
             onClick={toggleLanguage}
             className={`p-2 rounded-full transition-all flex items-center gap-1 font-bold text-xs ${
@@ -185,49 +113,6 @@ export default function Login() {
             {error}
           </motion.div>
         )}
-
-        {/* Settings Panel */}
-        <AnimatePresence>
-          {showSettings && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden mb-6"
-            >
-              <div className={`p-4 rounded-xl border ${isDarkMode ? 'bg-black/20 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
-                <label className="block text-xs font-bold mb-2 uppercase">Server IP Address</label>
-                <div className="flex gap-2 mb-2">
-                  <input 
-                    type="text" 
-                    value={serverIp}
-                    onChange={(e) => setServerIp(e.target.value)}
-                    placeholder="e.g. 192.168.1.5"
-                    className={`flex-1 p-2 rounded-lg text-sm outline-none border ${
-                      isDarkMode ? 'bg-luxury-900 border-white/10 text-white' : 'bg-white border-slate-200'
-                    }`}
-                  />
-                  <button 
-                    onClick={saveServerIp}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-bold"
-                  >
-                    Save
-                  </button>
-                </div>
-                <button 
-                  onClick={scanForServer}
-                  disabled={isScanning}
-                  className={`w-full py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 ${
-                    isScanning ? 'bg-gray-500 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700 text-white'
-                  }`}
-                >
-                  {isScanning ? 'Scanning Network...' : 'Auto Scan Network'}
-                </button>
-                <p className="text-xs opacity-50 mt-2">Current API: {API_URL}</p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Login Form */}
         <form onSubmit={handleLogin} className="space-y-5">

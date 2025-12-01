@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Production
+dist/
+build/
+
+# Misc
+.DS_Store
+.env
+.vscode/
+*.log
+
+# Android
+CafeSystem/Client/android/app/build/
+CafeSystem/Client/android/.gradle/
+CafeSystem/Client/android/local.properties
+CafeSystem/Client/android/.idea/
+CafeSystem/Client/android/captures/

@@ -6,24 +6,24 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
-import dgram from 'dgram';
-import os from 'os';
+import dgram from 'dgram'; // Import UDP module
+import os from 'os'; // Import OS module to get local IP
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_DIR = path.join(__dirname, 'data');
 
 // --- UDP Server Discovery Setup ---
-const udpSocket = dgram.createSocket('udp4');
-const DISCOVERY_PORT = 5555;
+const udpServer = dgram.createSocket('udp4');
+const UDP_PORT = 5001; // Port for discovery
 
-// Helper to get local IP
+// Helper to get local IP address
 function getLocalIpAddress() {
   const interfaces = os.networkInterfaces();
   for (const name of Object.keys(interfaces)) {
     for (const iface of interfaces[name]) {
       // Skip internal (non-127.0.0.1) and non-ipv4 addresses
-      if (iface.family === 'IPv4' && !iface.internal) {
+      if ('IPv4' === iface.family && !iface.internal) {
         return iface.address;
       }
     }
@@ -31,29 +31,26 @@ function getLocalIpAddress() {
   return '127.0.0.1';
 }
 
-udpSocket.on('error', (err) => {
-  console.log(`UDP Discovery Error:\n${err.stack}`);
-  udpSocket.close();
+udpServer.on('error', (err) => {
+  console.log(`UDP Server error:\n${err.stack}`);
+  udpServer.close();
 });
 
-udpSocket.on('message', (msg, rinfo) => {
+udpServer.on('message', (msg, rinfo) => {
   const message = msg.toString();
   if (message === 'DISCOVER_CAFE_SERVER') {
-    const serverInfo = JSON.stringify({
-      ip: getLocalIpAddress(),
+    console.log(`Discovery request from ${rinfo.address}:${rinfo.port}`);
+    const response = JSON.stringify({
+      serverIp: getLocalIpAddress(),
       port: 5000,
-      name: "Cafe System Server"
+      name: "CafeSystem"
     });
-    
-    udpSocket.send(serverInfo, rinfo.port, rinfo.address, (err) => {
-      if (err) console.error('Error sending discovery response:', err);
-      else console.log(`Sent discovery response to ${rinfo.address}:${rinfo.port}`);
-    });
+    udpServer.send(response, rinfo.port, rinfo.address);
   }
 });
 
-udpSocket.bind(DISCOVERY_PORT, () => {
-  console.log(`UDP Discovery Server listening on port ${DISCOVERY_PORT}`);
+udpServer.bind(UDP_PORT, () => {
+  console.log(`UDP Discovery Server listening on port ${UDP_PORT}`);
 });
 // --- End UDP Server Discovery Setup ---
 
