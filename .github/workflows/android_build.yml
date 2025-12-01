@@ -44,7 +44,9 @@ jobs:
         run: |
           cd CafeSystem/Client/android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          # Fix CRLF line endings for Windows-committed files
+          sed -i 's/\r$//' gradlew
+          ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
