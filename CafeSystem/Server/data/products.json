@@ -1,0 +1,117 @@
+[
+  {
+    "id": "1",
+    "name": {
+      "en": "Signature Latte",
+      "ar": "لاتيه مميز"
+    },
+    "price": 45,
+    "description": {
+      "en": "Rich espresso with steamed milk and a thin layer of foam.",
+      "ar": "إسبريسو غني مع حليب مبخر وطبقة رقيقة من الرغوة."
+    },
+    "category": "drinks",
+    "sizes": [
+      {
+        "name": {
+          "en": "Small",
+          "ar": "صغير"
+        },
+        "price": 0
+      },
+      {
+        "name": {
+          "en": "Medium",
+          "ar": "وسط"
+        },
+        "price": 10
+      },
+      {
+        "name": {
+          "en": "Large",
+          "ar": "كبير"
+        },
+        "price": 20
+      }
+    ],
+    "addons": [
+      {
+        "name": {
+          "en": "Extra Shot",
+          "ar": "شوت زيادة"
+        },
+        "price": 15
+      },
+      {
+        "name": {
+          "en": "Caramel Sauce",
+          "ar": "صوص كراميل"
+        },
+        "price": 10
+      },
+      {
+        "name": {
+          "en": "Almond Milk",
+          "ar": "حليب لوز"
+        },
+        "price": 25
+      }
+    ],
+    "image": "/uploads/1764544203653-572954863.jpg"
+  },
+  {
+    "id": "2",
+    "name": {
+      "en": "Caramel Macchiato",
+      "ar": "كراميل ماكياتو"
+    },
+    "price": 55,
+    "description": {
+      "en": "Espresso with vanilla syrup, steamed milk, and caramel drizzle.",
+      "ar": "إسبريسو مع شراب الفانيليا، حليب مبخر، ورذاذ الكراميل."
+    },
+    "category": "drinks",
+    "sizes": [
+      {
+        "name": {
+          "en": "Caramel Macchiato Mi=edum",
+          "ar": "كراميل ماكياتو وسط"
+        },
+        "price": 65
+      },
+      {
+        "name": {
+          "en": "Caramel Macchiato Larg",
+          "ar": "كراميل ماكياتو كبير"
+        },
+        "price": 90
+      }
+    ],
+    "addons": [
+      {
+        "name": {
+          "en": "sos karmel",
+          "ar": "صوص كارميل"
+        },
+        "price": 10
+      }
+    ],
+    "image": "/uploads/1764544273890-982357499.jpg"
+  },
+  {
+    "id": "3",
+    "name": {
+      "en": "Cheesecake",
+      "ar": "تشيز كيك"
+    },
+    "price": 60,
+    "description": {
+      "en": "Classic New York style cheesecake.",
+      "ar": "تشيز كيك كلاسيكي على طريقة نيويورك."
+    },
+    "category": "desserts",
+    "sizes": [],
+    "addons": [],
+    "image": "/uploads/1764544325919-796639876.jpg"
+  }
+]

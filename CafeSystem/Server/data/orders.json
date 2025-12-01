@@ -1,0 +1,410 @@
+[
+  {
+    "id": "1764535062999",
+    "tableId": 4,
+    "items": [
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 1,
+        "price": 155,
+        "details": "size: كراميل ماكياتو كبير | الإضافات: صوص كارميل"
+      }
+    ],
+    "total": 155,
+    "status": "COMPLETED",
+    "createdAt": "2025-11-30T20:37:42.999Z"
+  },
+  {
+    "id": "1764536360325",
+    "tableId": 7,
+    "items": [
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 1,
+        "price": 130,
+        "details": "size: كراميل ماكياتو وسط | الإضافات: صوص كارميل"
+      }
+    ],
+    "total": 130,
+    "status": "COMPLETED",
+    "createdAt": "2025-11-30T20:59:20.325Z"
+  },
+  {
+    "id": "1764536378907",
+    "tableId": 3,
+    "items": [
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 1,
+        "price": 155,
+        "details": "size: كراميل ماكياتو كبير | الإضافات: صوص كارميل"
+      }
+    ],
+    "total": 155,
+    "status": "COMPLETED",
+    "createdAt": "2025-11-30T20:59:38.907Z"
+  },
+  {
+    "id": "1764536789501",
+    "tableId": 1,
+    "items": [
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 1,
+        "price": 155,
+        "size": {
+          "name": {
+            "en": "Caramel Macchiato Larg",
+            "ar": "كراميل ماكياتو كبير"
+          },
+          "price": 90
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "sos karmel",
+              "ar": "صوص كارميل"
+            },
+            "price": 10
+          }
+        ],
+        "details": "size: كراميل ماكياتو كبير | الإضافات: صوص كارميل"
+      }
+    ],
+    "total": 155,
+    "status": "COMPLETED",
+    "createdAt": "2025-11-30T21:06:29.501Z"
+  },
+  {
+    "id": "1764537459273",
+    "tableId": 6,
+    "items": [
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 3,
+        "price": 155,
+        "size": {
+          "name": {
+            "en": "Caramel Macchiato Larg",
+            "ar": "كراميل ماكياتو كبير"
+          },
+          "price": 90
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "sos karmel",
+              "ar": "صوص كارميل"
+            },
+            "price": 10
+          }
+        ],
+        "details": "size: كراميل ماكياتو كبير | الإضافات: صوص كارميل"
+      }
+    ],
+    "total": 465,
+    "status": "COMPLETED",
+    "createdAt": "2025-11-30T21:17:39.273Z"
+  },
+  {
+    "id": "1764537485269",
+    "tableId": 7,
+    "items": [
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 2,
+        "price": 155,
+        "size": {
+          "name": {
+            "en": "Caramel Macchiato Larg",
+            "ar": "كراميل ماكياتو كبير"
+          },
+          "price": 90
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "sos karmel",
+              "ar": "صوص كارميل"
+            },
+            "price": 10
+          }
+        ],
+        "details": "size: كراميل ماكياتو كبير | الإضافات: صوص كارميل"
+      },
+      {
+        "name": "تشيز كيك",
+        "qty": 4,
+        "price": 60,
+        "size": null,
+        "addons": [],
+        "details": ""
+      }
+    ],
+    "total": 550,
+    "status": "SERVED",
+    "createdAt": "2025-11-30T21:18:05.269Z"
+  },
+  {
+    "id": "1764537539252",
+    "tableId": 5,
+    "items": [
+      {
+        "name": "لاتيه مميز",
+        "qty": 4,
+        "price": 90,
+        "size": {
+          "name": {
+            "en": "Large",
+            "ar": "كبير"
+          },
+          "price": 20
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "Caramel Sauce",
+              "ar": "صوص كراميل"
+            },
+            "price": 10
+          },
+          {
+            "name": {
+              "en": "Extra Shot",
+              "ar": "شوت زيادة"
+            },
+            "price": 15
+          }
+        ],
+        "details": "size: كبير | الإضافات: صوص كراميل, شوت زيادة"
+      },
+      {
+        "name": "لاتيه مميز",
+        "qty": 2,
+        "price": 70,
+        "size": {
+          "name": {
+            "en": "Small",
+            "ar": "صغير"
+          },
+          "price": 0
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "Almond Milk",
+              "ar": "حليب لوز"
+            },
+            "price": 25
+          }
+        ],
+        "details": "size: صغير | الإضافات: حليب لوز"
+      },
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 2,
+        "price": 155,
+        "size": {
+          "name": {
+            "en": "Caramel Macchiato Larg",
+            "ar": "كراميل ماكياتو كبير"
+          },
+          "price": 90
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "sos karmel",
+              "ar": "صوص كارميل"
+            },
+            "price": 10
+          }
+        ],
+        "details": "size: كراميل ماكياتو كبير | الإضافات: صوص كارميل"
+      }
+    ],
+    "total": 810,
+    "status": "SERVED",
+    "createdAt": "2025-11-30T21:18:59.252Z"
+  },
+  {
+    "id": "1764537564562",
+    "tableId": 1,
+    "items": [
+      {
+        "name": "لاتيه مميز",
+        "qty": 1,
+        "price": 90,
+        "size": {
+          "name": {
+            "en": "Large",
+            "ar": "كبير"
+          },
+          "price": 20
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "Almond Milk",
+              "ar": "حليب لوز"
+            },
+            "price": 25
+          }
+        ],
+        "details": "size: كبير | الإضافات: حليب لوز"
+      },
+      {
+        "name": "تشيز كيك",
+        "qty": 1,
+        "price": 60,
+        "size": null,
+        "addons": [],
+        "details": ""
+      }
+    ],
+    "total": 150,
+    "status": "SERVED",
+    "createdAt": "2025-11-30T21:19:24.562Z"
+  },
+  {
+    "id": "1764537571034",
+    "tableId": 10,
+    "items": [
+      {
+        "name": "لاتيه مميز",
+        "qty": 1,
+        "price": 65,
+        "size": {
+          "name": {
+            "en": "Medium",
+            "ar": "وسط"
+          },
+          "price": 10
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "Caramel Sauce",
+              "ar": "صوص كراميل"
+            },
+            "price": 10
+          }
+        ],
+        "details": "size: وسط | الإضافات: صوص كراميل"
+      }
+    ],
+    "total": 65,
+    "status": "SERVED",
+    "createdAt": "2025-11-30T21:19:31.034Z"
+  },
+  {
+    "id": "1764537581276",
+    "tableId": 7,
+    "items": [
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 1,
+        "price": 145,
+        "size": {
+          "name": {
+            "en": "Caramel Macchiato Larg",
+            "ar": "كراميل ماكياتو كبير"
+          },
+          "price": 90
+        },
+        "addons": [],
+        "details": "size: كراميل ماكياتو كبير"
+      }
+    ],
+    "total": 145,
+    "status": "SERVED",
+    "createdAt": "2025-11-30T21:19:41.276Z"
+  },
+  {
+    "id": "1764537587085",
+    "tableId": 1,
+    "items": [
+      {
+        "name": "كراميل ماكياتو",
+        "qty": 1,
+        "price": 155,
+        "size": {
+          "name": {
+            "en": "Caramel Macchiato Larg",
+            "ar": "كراميل ماكياتو كبير"
+          },
+          "price": 90
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "sos karmel",
+              "ar": "صوص كارميل"
+            },
+            "price": 10
+          }
+        ],
+        "details": "size: كراميل ماكياتو كبير | الإضافات: صوص كارميل"
+      }
+    ],
+    "total": 155,
+    "status": "SERVED",
+    "createdAt": "2025-11-30T21:19:47.085Z"
+  },
+  {
+    "id": "1764537590853",
+    "tableId": 2,
+    "items": [
+      {
+        "name": "تشيز كيك",
+        "qty": 1,
+        "price": 60,
+        "size": null,
+        "addons": [],
+        "details": ""
+      }
+    ],
+    "total": 60,
+    "status": "SERVED",
+    "createdAt": "2025-11-30T21:19:50.853Z"
+  },
+  {
+    "id": "1764542736064",
+    "tableId": 2,
+    "items": [
+      {
+        "name": "تشيز كيك",
+        "qty": 1,
+        "price": 60,
+        "size": null,
+        "addons": [],
+        "details": ""
+      },
+      {
+        "name": "لاتيه مميز",
+        "qty": 2,
+        "price": 70,
+        "size": {
+          "name": {
+            "en": "Small",
+            "ar": "صغير"
+          },
+          "price": 0
+        },
+        "addons": [
+          {
+            "name": {
+              "en": "Almond Milk",
+              "ar": "حليب لوز"
+            },
+            "price": 25
+          }
+        ],
+        "details": "size: صغير | الإضافات: حليب لوز"
+      }
+    ],
+    "total": 200,
+    "status": "SERVED",
+    "createdAt": "2025-11-30T22:45:36.064Z"
+  }
+]

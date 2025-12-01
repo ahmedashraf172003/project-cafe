@@ -1,0 +1,37 @@
+[
+  {
+    "id": "drinks",
+    "name": {
+      "en": "Drinks",
+      "ar": "مشروبات"
+    }
+  },
+  {
+    "id": "desserts",
+    "name": {
+      "en": "Desserts",
+      "ar": "حلويات"
+    }
+  },
+  {
+    "id": "mainCourse",
+    "name": {
+      "en": "Main Course",
+      "ar": "طبق رئيسي"
+    }
+  },
+  {
+    "id": "appetizers",
+    "name": {
+      "en": "Appetizers",
+      "ar": "مقبلات"
+    }
+  },
+  {
+    "id": "breakfast",
+    "name": {
+      "en": "Breakfast",
+      "ar": "فطور"
+    }
+  }
+]
