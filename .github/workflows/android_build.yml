@@ -43,7 +43,10 @@ jobs:
       - name: Build APK with Gradle
         run: |
           cd CafeSystem/Client/android
-          gradle assembleDebug --stacktrace
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          chmod +x gradlew
+          sed -i 's/\r$//' gradlew
+          ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
